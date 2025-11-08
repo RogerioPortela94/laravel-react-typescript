@@ -1,9 +1,14 @@
+import MainLayout from "../layouts/MainLayout";
+import { Head } from "@inertiajs/react";
+
 export default function Home() {
-    return (
-      <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-        <h1>🚀 Laravel + React + Inertia + TypeScript</h1>
-        <p>Configuração completa e funcionando!</p>
-      </div>
-    )
-  }
-  
+  return (
+    <MainLayout>
+      <Head title="Home" />
+      <h1 className="text-2xl font-semibold">Bem-vindo ao Projeto Base</h1>
+      <p className="mt-2 text-gray-700">
+        Este é o conteúdo da página inicial.
+      </p>
+    </MainLayout>
+  );
+}
