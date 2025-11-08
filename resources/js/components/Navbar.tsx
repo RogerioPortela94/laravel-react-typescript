@@ -5,7 +5,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="w-full bg-white px-6">
+    <nav className="w-full px-6 bg-white">
       <div className="relative max-w-7xl mx-auto px-6 py-3 flex items-center justify-between border-b">
 
         <Link href="/" className="text-lg font-semibold">
@@ -39,23 +39,22 @@ export default function Navbar() {
           ></span>
         </button>
 
-      </div>
-
-      {/* MENU MOBILE COM TRANSIÇÃO SUAVE */}
-      <div
-        className={`
-          md:hidden overflow-hidden bg-white shadow-md border-b
-          transition-all duration-300 ease-in-out
-          ${isOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"}
-        `}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3 text-sm">
-          <Link href="/" onClick={() => setIsOpen(false)} className="hover:underline">Home</Link>
-          <Link href="/sobre" onClick={() => setIsOpen(false)} className="hover:underline">Sobre</Link>
-          <Link href="/contato" onClick={() => setIsOpen(false)} className="hover:underline">Contato</Link>
+        {/* MENU MOBILE SOBREPOSTO (NÃO EMPURRA O MAIN) */}
+        <div
+          className={`
+            md:hidden absolute left-0 right-0 top-full z-40 bg-white shadow-lg border-b
+            overflow-hidden transition-all duration-300 ease-in-out
+            ${isOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"}
+          `}
+        >
+          <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3 text-sm">
+            <Link href="/" onClick={() => setIsOpen(false)} className="hover:underline">Home</Link>
+            <Link href="/sobre" onClick={() => setIsOpen(false)} className="hover:underline">Sobre</Link>
+            <Link href="/contato" onClick={() => setIsOpen(false)} className="hover:underline">Contato</Link>
+          </div>
         </div>
-      </div>
 
+      </div>
     </nav>
   );
 }
